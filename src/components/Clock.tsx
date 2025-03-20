@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 type Props = {
   name: string;
@@ -6,7 +6,7 @@ type Props = {
 
 type State = {
   today: Date;
-}
+};
 
 export class Clock extends React.Component<Props, State> {
   state: State = {
@@ -21,14 +21,14 @@ export class Clock extends React.Component<Props, State> {
     });
     // eslint-disable-next-line no-console
     console.log(newDate.toUTCString().slice(-12, -4));
-  }, 1000)
+  }, 1000);
 
-  componentDidUpdate(prevProps: Readonly<Props>,) {
+  componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.name !== this.props.name) {
-      console.warn(`Renamed from ${prevProps.name} to ${this.props.name}`)
+      // eslint-disable-next-line no-console
+      console.warn(`Renamed from ${prevProps.name} to ${this.props.name}`);
     }
   }
-
 
   componentWillUnmount() {
     window.clearInterval(this.todayId);

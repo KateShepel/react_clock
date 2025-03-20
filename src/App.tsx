@@ -5,7 +5,7 @@ import { Clock } from './components/Clock';
 type State = {
   clockName: string;
   hasClock: boolean;
-}
+};
 
 function getRandomName(): string {
   const value = Date.now().toString().slice(-4);
@@ -25,15 +25,14 @@ export class App extends React.Component {
     this.setState({
       hasClock: !this.state.hasClock,
     });
-
-  }
+  };
 
   timerId = 0;
 
   componentDidMount() {
     this.timerId = window.setInterval(() => {
       this.setState({
-        clockName: getRandomName()
+        clockName: getRandomName(),
       });
     }, 3300);
 
@@ -48,8 +47,6 @@ export class App extends React.Component {
     document.removeEventListener('click', this.clockHeandler);
   }
 
-
-
   render() {
     return (
       <div className="App">
@@ -59,4 +56,4 @@ export class App extends React.Component {
       </div>
     );
   }
-};
+}
