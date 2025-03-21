@@ -19,7 +19,7 @@ export class App extends React.Component {
     hasClock: true,
   };
 
-  clockHeandler = (event: MouseEvent) => {
+  handleClock = (event: MouseEvent) => {
     event.preventDefault();
 
     this.setState({
@@ -36,15 +36,15 @@ export class App extends React.Component {
       });
     }, 3300);
 
-    document.addEventListener('contextmenu', this.clockHeandler);
-    document.addEventListener('click', this.clockHeandler);
+    document.addEventListener('contextmenu', this.handleClock);
+    document.addEventListener('click', this.handleClock);
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timerId);
 
-    document.removeEventListener('contextmenu', this.clockHeandler);
-    document.removeEventListener('click', this.clockHeandler);
+    document.removeEventListener('contextmenu', this.handleClock);
+    document.removeEventListener('click', this.handleClock);
   }
 
   render() {

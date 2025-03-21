@@ -13,15 +13,21 @@ export class Clock extends React.Component<Props, State> {
     today: new Date(),
   };
 
-  todayId = window.setInterval(() => {
-    const newDate = new Date();
+  todayId = 0;
 
-    this.setState({
-      today: newDate,
-    });
-    // eslint-disable-next-line no-console
-    console.log(newDate.toUTCString().slice(-12, -4));
-  }, 1000);
+  componentDidMount() {
+    this.todayId = window.setInterval(() => {
+      const newDate = new Date();
+
+      this.setState({
+        today: newDate,
+      });
+      // eslint-disable-next-line no-console
+      console.log(newDate.toUTCString().slice(-12, -4));
+    }, 1000);
+
+  }
+
 
   componentDidUpdate(prevProps: Readonly<Props>) {
     if (prevProps.name !== this.props.name) {
